@@ -1,0 +1,62 @@
+$colors: (
+  // Colores principales (inspirados en la bandera argentina)
+  primary: #0074B7,
+  // Azul celeste tradicional, elegante
+  secondary: #FFD700,
+  // Dorado tipo "sol de mayo", para acentos o detalles
+
+  // Tonos oscuros rústicos
+  black1: #1C1C1C,
+  // Negro profundo para textos principales
+  black2: #2B2B2B,
+  // Gris oscuro para fondos secundarios
+  black3: #3F3F3F,
+  // Para sombreado o detalles
+
+  // Colores madera / naturaleza (asociados al campo y lo artesanal)
+  rustic-brown: #6F4E37,
+  // Marrón madera
+  rustic-beige: #E8D6CB,
+  // Beige cálido tipo cuero o tierra seca
+  rustic-olive: #78866B,
+  // Verde oliva rústico, ideal para camping
+
+  // Grises para estructura y profundidad
+  gray0: #F1F5F9,
+  // Fondo limpio
+  gray1: #E2E8F0,
+  // Fondo alterno
+  gray2: #CBD5E1,
+  // Líneas, bordes suaves
+  gray3: #94A3B8,
+  // Texto secundario
+
+  // Blancos
+  white1: #FFFFFF,
+  white2: #FAFAFA,
+
+  // Acentos especiales
+  alert-red: #DC2626,
+  // Errores, botones de eliminar
+  success-green: #16A34A,
+  // Confirmaciones, acciones exitosas
+  wine-red: #6B2737 // Para destacar categoría de vinos y bebidas
+);
+
+$screen-big-desktop: 1440px;
+$screen-desktop: 1024px;
+$screen-tablet: 768px;
+
+$font-size-title: 5.125rem;
+$font-size-text: 1.25rem;
+$font-size-sm: 0.875rem;
+$font-size-ultra-sm: 0.75rem;
+
+$prime-mixins1: 992px;
+$prime-mixins2: 991px;
+$scale: 14px;
+$borderRadius: 12px;
+$transitionDuration: .2s;
+
+$padding-box: 0 24px;
+$margin-box: 0px;

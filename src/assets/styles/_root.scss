@@ -1,0 +1,81 @@
+@use "variables.scss" as variables;
+@use "mixins.scss" as mixins;
+
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+div,
+section,
+aside,
+article,
+nav {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-family: Poppins;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+
+  &__app-root {
+    width: 100%;
+    height: 100%;
+    min-height: 100vh;
+  }
+}
+
+ul,
+li {
+  list-style: none;
+}
+
+a,
+a:link,
+a:visited {
+  text-decoration: none;
+}
+
+.wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  padding: 0px 24px;
+
+  @include mixins.desktop {
+    padding-top: 80px;
+  }
+}
+
+.container--fluid {
+  padding: 0px 24px;
+
+  @include mixins.desktop {
+    margin: 0 auto;
+    padding: 0px;
+  }
+}
+
+.text--secondary {
+  color: map-get(variables.$colors, 'secondary');
+}
+
+.container--payment .p-inputnumber {
+  width: 100%;
+}
