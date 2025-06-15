@@ -1,9 +1,1 @@
 /* You can add global styles to this file, and also import other style files */
-@import "primeicons/primeicons.css";
-@import "tailwindcss";
-@import "primeicons/primeicons.css";
-@import "assets/styles/root";
-@plugin "tailwindcss-primeui";
-@plugin "daisyui" {
-  themes: light --default, dark --prefersdark;
-};
