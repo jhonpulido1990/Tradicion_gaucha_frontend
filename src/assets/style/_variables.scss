@@ -1,0 +1,134 @@
+@use "sass:map";
+
+$colors: (
+  // === COLORES DE MARCA (BRANDING) ===
+  // Celeste de la bandera como color principal, pero en un tono más profundo y versátil.
+  primary: #1C6EA8,
+  // Celeste oscuro, evoca profundidad y confianza
+  primary-light: #2A86B8,
+  // Celeste más claro, ideal para hovers, barras, acentos
+  secondary: #F8B400,
+  // Amarillo del Sol, vibrante para botones principales y acentos fuertes
+  accent: #4CAF50,
+  // Un verde fresco y natural, para "salud", "éxito", "frescura" (complemento)
+
+  // === NEUTROS: Texto y estructura (derivados del blanco y negro con matices) ===
+  black1: #0A0A0A,
+  // Negro puro (para el contraste más alto)
+  black2: #1E293B,
+  // Gris muy oscuro, casi negro (texto principal, sombras)
+  black3: #334155,
+  // Gris oscuro (títulos, texto secundario importante)
+
+  // === GRIS: Escala de textos y fondos suaves ===
+  gray0: #F0F4F8,
+  // Gris muy claro, casi blanco (fondos de cards, secciones)
+  gray1: #E2E8F0,
+  // Gris claro (bordes sutiles, líneas divisorias)
+  gray2: #CBD5E1,
+  // Gris medio claro (placeholders, iconos menos prominentes)
+  gray3: #94A3B8,
+  // Gris medio (texto secundario, descripciones)
+  gray4: #64748B,
+  // Gris medio oscuro (subtítulos, texto de menor jerarquía)
+  gray5: #475569,
+  // Gris oscuro suave (para elementos de texto más leíbles en fondos claros)
+  gray6: #334155,
+  // Mismo que black3 (para consistencia si se usa como gris oscuro)
+  gray7: #1E293B,
+  // Mismo que black2 (para consistencia si se usa como gris muy oscuro)
+  gray8: #0A0A0A,
+  // Mismo que black1 (para asegurar el máximo contraste)
+
+  // === BLANCOS: Fondos y superficies (el blanco de la bandera como base) ===
+  white1: #FFFFFF,
+  // Blanco puro (fondo principal, contenido, cards)
+  white2: #FCFCFC,
+  // Blanco muy ligeramente roto (para crear sutiles capas visuales)
+  white3: #F8F8F8,
+  // Gris claro casi blanco (fondos de cards, elementos flotantes)
+  bg-gray1: #F8F9FA,
+  // Un gris casi blanco muy limpio y fresco (fondo principal)
+  bg-gray2: #EFF2F7,
+  // Un gris azulado muy claro (fondo alternativo, para secciones)
+
+  // === COLORES DE ESTADO (feedback) ===
+  success: #28A745,
+  // Verde vibrante para confirmaciones
+  error: #DC3545,
+  // Rojo para errores y alertas críticas
+  warning: #FFC107,
+  // Ámbar para advertencias
+  info: #17A2B8,
+  // Azul-cian para información general y notificaciones neutras
+
+  // === COLORES AZULES (Para variaciones y consistencia) ===
+  blue400: #3D8FCF,
+  // Azul claro medio (para texto o enlaces menos prominentes)
+  blue600: #1C6EA8,
+  // Mismo que primary (para asegurar la consistencia del color de marca)
+  blue700: #0C4E78,
+  // Azul más oscuro (para hovers o estados activos de elementos primarios)
+
+  // === COLOR PERSONALIZADO ===
+  custom-cursor-blue: #3182CE,
+  // Azul vibrante para elementos interactivos como cursores
+);
+
+@function color($color-name) {
+  @if not map.has-key($colors, $color-name) {
+    @warn "El color `#{$color-name}` no existe en el mapa de colores.";
+  }
+
+  @return map.get($colors, $color-name);
+}
+
+// Breakpoints - Mobile First
+$mobile-small: 320px;
+$mobile: 375px;
+$tablet: 768px;
+$desktop: 1024px;
+$desktop-large: 1440px;
+$desktop-xl: 1920px;
+
+// Typography
+$font-size-title: 5.125rem; // 82px
+$font-size-text: 1.25rem; // 20px
+$font-size-sm: 0.875rem; // 14px
+$font-size-ultra-sm: 0.75rem; // 12px
+
+// Responsive typography
+$font-size-title-mobile: 2.5rem; // 40px
+$font-size-text-mobile: 1rem; // 16px
+
+// Layout
+$padding-box: 0 24px;
+$margin-box: 0px;
+$container-max-width: 1200px;
+
+// UI Elements
+$borderRadius: 12px;
+$borderRadius-sm: 6px;
+$borderRadius-lg: 16px;
+
+// Transitions
+$transitionDuration: 0.2s;
+$transitionEasing: ease-in-out;
+
+// Spacing scale (múltiplos de 8px)
+$spacing-xs: 4px;
+$spacing-sm: 8px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+$spacing-xxl: 48px;
+
+// Z-index scale
+$z-dropdown: 1000;
+$z-modal: 1050;
+$z-tooltip: 1070;
+
+// PrimeNG compatibility (si los necesitas)
+/* $prime-mixins1: 992px;
+$prime-mixins2: 991px; */
+$scale: 14px;
