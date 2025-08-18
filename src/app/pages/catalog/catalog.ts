@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { CatalogTemplate } from "../../shared/templates/catalog-template/catalog-template";
 
 @Component({
   selector: 'app-catalog',
-  imports: [],
+  imports: [CatalogTemplate],
   templateUrl: './catalog.html',
   styleUrl: './catalog.scss'
 })
