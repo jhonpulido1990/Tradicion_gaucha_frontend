@@ -1,0 +1,41 @@
+@use '../../../../assets/style/variables' as vars;
+@use '../../../../assets/style/mixins' as mixins;
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  gap: vars.$spacing-sm;
+
+  &__item {
+    display: flex;
+    align-items: flex-start;
+    gap: vars.$spacing-sm;
+  }
+
+  &__icon {
+    color: vars.color(primary-light);
+    font-size: vars.$font-size-sm;
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  &__link,
+  &__text {
+    color: vars.color(gray2);
+    text-decoration: none;
+    font-size: vars.$font-size-sm;
+    line-height: 1.4;
+  }
+
+  &__link {
+    transition: color vars.$transitionDuration vars.$transitionEasing;
+
+    &:hover {
+      color: vars.color(primary-light);
+    }
+
+    &:focus {
+      @include mixins.focused();
+    }
+  }
+}

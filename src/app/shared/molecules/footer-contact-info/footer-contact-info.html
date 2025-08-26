@@ -1,0 +1,20 @@
+<div class="contact-info">
+  @for (contact of contacts(); track contact.text) {
+    <div class="contact-info__item">
+      <i [class]="contact.icon" class="contact-info__icon" aria-hidden="true"></i>
+      @if (contact.type !== 'location') {
+        <a
+          [href]="getContactLink(contact)"
+          [target]="shouldOpenInNewTab(contact) ? '_blank' : '_self'"
+          [rel]="shouldOpenInNewTab(contact) ? 'noopener noreferrer' : ''"
+          class="contact-info__link"
+          [attr.aria-label]="'Contactar por ' + contact.type"
+        >
+          {{ contact.text }}
+        </a>
+      } @else {
+        <span class="contact-info__text">{{ contact.text }}</span>
+      }
+    </div>
+  }
+</div>

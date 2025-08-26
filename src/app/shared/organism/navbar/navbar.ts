@@ -30,7 +30,7 @@ export class Navbar {
 
   // Configuraciones
   logoConfig = signal<LogoConfig>({
-    imageSrc: '../../../../assets/images/logo/logo-removebg.png',
+    imageSrc: 'assets/images/logo/logo-removebg.png',
     imageAlt: 'Logo Tradición Gaucha',
     text: 'Tradición Gaucha',
     route: '/home',
