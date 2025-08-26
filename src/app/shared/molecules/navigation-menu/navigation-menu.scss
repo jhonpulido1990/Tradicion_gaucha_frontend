@@ -1,0 +1,107 @@
+@use '../../../../assets/style/variables' as vars;
+@use '../../../../assets/style/mixins' as mixins;
+
+.nav-menu {
+  list-style: none;
+  margin: vars.$margin-box;
+  padding: 0;
+
+  &--horizontal {
+    display: flex;
+    gap: vars.$spacing-xl;
+    align-items: center;
+
+    @include mixins.mobile-only() {
+      display: none;
+    }
+  }
+
+  &--vertical {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$spacing-sm;
+  }
+
+  &__item {
+    position: relative;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-sm;
+    padding: vars.$spacing-sm vars.$spacing-md;
+    text-decoration: none;
+    color: vars.color(black2);
+    font-weight: 500;
+    font-size: vars.$font-size-sm;
+    border-radius: vars.$borderRadius;
+    transition: all vars.$transitionDuration vars.$transitionEasing;
+    position: relative;
+
+    &:hover {
+      color: vars.color(primary);
+      background-color: vars.color(bg-gray1);
+    }
+
+    &:focus {
+      @include mixins.focused();
+    }
+
+    &--active {
+      color: vars.color(primary);
+    }
+
+    .nav-menu--horizontal & {
+      &--active::after {
+        content: '';
+        position: absolute;
+        bottom: -#{vars.$spacing-sm};
+        left: 50%;
+        transform: translateX(-50%);
+        width: 24px;
+        height: 2px;
+        background-color: vars.color(primary);
+        border-radius: 1px;
+      }
+    }
+
+    .nav-menu--vertical & {
+      padding: vars.$spacing-md;
+      
+      &--active {
+        background-color: vars.color(bg-gray1);
+      }
+    }
+
+    @include mixins.desktop-up() {
+      font-size: vars.$font-size-text-mobile;
+      gap: vars.$spacing-md;
+    }
+  }
+
+  &__icon {
+    font-size: vars.$font-size-sm;
+    width: 20px;
+    text-align: center;
+    color: vars.color(gray3);
+    
+    .nav-menu--horizontal & {
+      @media (max-width: calc(#{vars.$desktop} - 1px)) {
+        display: none;
+      }
+    }
+
+    .nav-menu__link:hover & {
+      color: vars.color(primary);
+    }
+
+    .nav-menu__link--active & {
+      color: vars.color(primary);
+    }
+  }
+
+  &__text {
+    white-space: nowrap;
+  }
+}

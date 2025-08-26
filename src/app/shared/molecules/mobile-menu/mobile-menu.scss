@@ -1,0 +1,35 @@
+@use '../../../../assets/style/variables' as vars;
+@use '../../../../assets/style/mixins' as mixins;
+
+.mobile-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(vars.color(black1), 0.5);
+  z-index: vars.$z-modal;
+  display: flex;
+  justify-content: flex-end;
+  
+  @include mixins.tablet-up() {
+    display: none;
+  }
+}
+
+.mobile-menu {
+  background-color: vars.color(white1);
+  width: 280px;
+  height: 100vh;
+  padding: vars.$spacing-xl vars.$spacing-lg;
+  box-shadow: -2px 0 8px rgba(vars.color(black1), 0.1);
+  border-left: 1px solid vars.color(gray1);
+  transform: translateX(0);
+  transition: transform 0.3s vars.$transitionEasing;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mobile-menu {
+    transition: none;
+  }
+}

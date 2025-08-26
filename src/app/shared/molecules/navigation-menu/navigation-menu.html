@@ -1,0 +1,24 @@
+<ul 
+  class="nav-menu" 
+  [class]="'nav-menu--' + variant()"
+  role="menubar"
+>
+  @for (item of items(); track item.route) {
+    <li class="nav-menu__item" role="none">
+      <a
+        [routerLink]="item.route"
+        routerLinkActive="nav-menu__link--active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="nav-menu__link"
+        role="menuitem"
+        [attr.aria-label]="item.ariaLabel || item.label"
+        (click)="onItemClick(item)"
+      >
+        @if (showIcons() && item.icon) {
+          <i [class]="item.icon" class="nav-menu__icon" aria-hidden="true"></i>
+        }
+        <span class="nav-menu__text">{{ item.label }}</span>
+      </a>
+    </li>
+  }
+</ul>
