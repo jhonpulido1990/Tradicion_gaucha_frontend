@@ -1,0 +1,8 @@
+<div class="feature-pills" [class.feature-pills--animated]="config().animated">
+  @for (feature of config().features; track feature.label) {
+  <div class="feature-pills__item">
+    <i [class]="feature.icon + ' feature-pills__icon feature-pills__icon--' + (feature.color || 'primary')"></i>
+    <span class="feature-pills__label">{{ feature.label }}</span>
+  </div>
+  }
+</div>

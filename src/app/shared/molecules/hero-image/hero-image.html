@@ -1,0 +1,12 @@
+<div class="hero-image" [class.hero-image--animated]="config().animated">
+  <div class="hero-image__container">
+    <img [src]="config().src" [alt]="config().alt" class="hero-image__img" loading="lazy">
+    <div class="hero-image__overlay"></div>
+
+    @if (config().badge) {
+    <div class="hero-image__badge" [class]="'hero-image__badge--' + (config().badge!.position || 'top-right')">
+      <span class="hero-image__badge-text">{{ config().badge!.text }}</span>
+    </div>
+    }
+  </div>
+</div>
