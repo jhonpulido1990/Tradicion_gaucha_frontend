@@ -14,6 +14,7 @@ import { Products } from "./products/products";
 import { Profile } from "./profile/profile";
 import { Users } from "./users/users";
 import { Wishlist } from "./wishlist/wishlist";
+import { Contact } from "./contact/contact";
 
 export const PageRoutes: Routes = [
   {
@@ -57,6 +58,10 @@ export const PageRoutes: Routes = [
       {
         path: 'formulario',
         component: Form
+      },
+      {
+        path: 'contacto',
+        component: Contact
       }
     ]
   },

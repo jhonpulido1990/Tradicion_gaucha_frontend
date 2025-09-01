@@ -68,7 +68,7 @@ export class Navbar {
     {
       icon: 'pi pi-user',
       label: 'Buscar productos',
-      action: 'search',
+      action: 'login',
       variant: 'default'
     },
     {
@@ -96,8 +96,8 @@ export class Navbar {
    */
   onActionClick(action: string): void {
     switch (action) {
-      case 'search':
-        this.handleSearch();
+      case 'login':
+        this.handleLogin();
         break;
       case 'cart':
         this.goToCart();
@@ -131,9 +131,9 @@ export class Navbar {
   }
 
   /**
-   * Manejar búsqueda
+   * Manejar inicio de sesión
    */
-  private handleSearch(): void {
+  private handleLogin(): void {
     this.router.navigate(['/login']);
   }
 
