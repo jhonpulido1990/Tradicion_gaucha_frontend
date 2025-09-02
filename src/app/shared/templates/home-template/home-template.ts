@@ -27,7 +27,7 @@ export class HomeTemplate {
           color: 'secondary'
         },
         {
-          icon: 'pi pi-coffee',
+          icon: 'pi pi-apple',
           label: 'Mate',
           color: 'accent'
         },
@@ -54,7 +54,7 @@ export class HomeTemplate {
       ]
     },
     heroImage: {
-      src: 'assets/images/logo/logo.jpeg',
+      src: 'assets/images/asado.png',
       alt: 'Asado tradicional argentino',
       badge: {
         text: '100% Argentino',
