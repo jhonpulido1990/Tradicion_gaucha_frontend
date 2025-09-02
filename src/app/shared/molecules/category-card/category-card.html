@@ -1,0 +1,11 @@
+<div class="category-card" [class.category-card--animated]="config().animated" (click)="onCardClick()">
+  <div class="category-card__image-container">
+    <img [src]="config().image" [alt]="config().alt" class="category-card__image" loading="lazy">
+    <div class="category-card__overlay"></div>
+  </div>
+
+  <div class="category-card__content">
+    <h3 class="category-card__title">{{ config().title }}</h3>
+    <p class="category-card__description">{{ config().description }}</p>
+  </div>
+</div>

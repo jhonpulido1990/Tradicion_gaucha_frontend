@@ -1,0 +1,148 @@
+@use '../../../../assets/style/variables' as vars;
+@use '../../../../assets/style/mixins' as mixins;
+
+.category-card {
+  position: relative;
+  border-radius: vars.$borderRadius-lg;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  overflow: hidden;
+
+  // Neumorphism base - Soft inset shadow
+  background: linear-gradient(145deg, vars.color('gray0'), vars.color('white1'));
+  box-shadow:
+    20px 20px 60px rgba(vars.color('gray3'), 0.15),
+    -20px -20px 60px rgba(vars.color('white1'), 0.7),
+    inset 0px 0px 0px rgba(vars.color('gray2'), 0);
+
+  &:hover {
+    // Neumorphism hover - Pressed/inset effect
+    background: linear-gradient(145deg, vars.color('white1'), vars.color('gray0'));
+    box-shadow:
+      inset 15px 15px 30px rgba(vars.color('gray3'), 0.1),
+      inset -15px -15px 30px rgba(vars.color('white1'), 0.8),
+      5px 5px 15px rgba(vars.color('gray3'), 0.1);
+
+    transform: translateY(-2px);
+
+    .category-card__image {
+      transform: scale(1.05);
+    }
+
+    .category-card__overlay {
+      background: linear-gradient(
+        to bottom,
+        rgba(vars.color('black2'), 0.1) 0%,
+        rgba(vars.color('black2'), 0.3) 100%
+      );
+    }
+
+    .category-card__title {
+      color: vars.color('primary');
+    }
+  }
+
+  // BEM Elements
+  &__image-container {
+    position: relative;
+    height: 240px;
+    overflow: hidden;
+    border-radius: vars.$borderRadius-lg vars.$borderRadius-lg 0 0;
+
+    @include mixins.mobile-only() {
+      height: 200px;
+    }
+  }
+
+  &__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      to bottom,
+      rgba(vars.color('black2'), 0.05) 0%,
+      rgba(vars.color('black2'), 0.2) 100%
+    );
+    transition: background 0.4s ease;
+  }
+
+  &__content {
+    padding: vars.$spacing-lg;
+    position: relative;
+    z-index: 2;
+
+    @include mixins.mobile-only() {
+      padding: vars.$spacing-md;
+    }
+  }
+
+  &__title {
+    font-size: vars.$font-size-text;
+    font-weight: 600;
+    color: vars.color('black2');
+    margin: 0 0 vars.$spacing-sm 0;
+    line-height: 1.3;
+    transition: color 0.3s ease;
+
+    @include mixins.tablet-up() {
+      font-size: calc(vars.$font-size-text * 1.1);
+    }
+  }
+
+  &__description {
+    font-size: vars.$font-size-text-mobile;
+    color: vars.color('gray4');
+    margin: 0;
+    line-height: 1.5;
+
+    @include mixins.tablet-up() {
+      font-size: vars.$font-size-sm;
+    }
+  }
+
+  // BEM Modifiers
+  &--animated {
+    animation: floatIn 0.6s ease-out both;
+
+    &:nth-child(1) { animation-delay: 0.1s; }
+    &:nth-child(2) { animation-delay: 0.2s; }
+    &:nth-child(3) { animation-delay: 0.3s; }
+    &:nth-child(4) { animation-delay: 0.4s; }
+    &:nth-child(5) { animation-delay: 0.5s; }
+    &:nth-child(6) { animation-delay: 0.6s; }
+  }
+
+  // Responsive adjustments
+  @include mixins.mobile-only() {
+    border-radius: vars.$borderRadius;
+
+    box-shadow:
+      15px 15px 40px rgba(vars.color('gray3'), 0.12),
+      -15px -15px 40px rgba(vars.color('white1'), 0.6);
+
+    &:hover {
+      box-shadow:
+        inset 10px 10px 20px rgba(vars.color('gray3'), 0.08),
+        inset -10px -10px 20px rgba(vars.color('white1'), 0.7),
+        3px 3px 10px rgba(vars.color('gray3'), 0.08);
+    }
+  }
+}
+
+// Animations
+@keyframes floatIn {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}

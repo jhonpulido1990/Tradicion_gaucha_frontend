@@ -1,1 +1,11 @@
-<app-hero-header [config]="heroConfig()" (buttonClick)="onButtonClick($event)" />
+<!-- Hero Section -->
+<app-hero-header 
+  [config]="heroConfig()"
+  (buttonClick)="onButtonClick($event)"
+/>
+
+<!-- Categories Section -->
+<app-categories-section
+  [config]="categoriesConfig()"
+  (categoryClick)="onCategoryClick($event)"
+/>

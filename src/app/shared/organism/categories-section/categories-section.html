@@ -1,0 +1,11 @@
+<section class="categories-section">
+  <div class="categories-section__container">
+    <app-section-header [config]="getSectionHeaderConfig()" />
+
+    <div class="categories-section__grid" [class]="getGridClasses()">
+      @for (category of config().categories; track category.title) {
+      <app-category-card [config]="getCategoryConfig(category)" (cardClick)="onCategoryClick($event)" />
+      }
+    </div>
+  </div>
+</section>
