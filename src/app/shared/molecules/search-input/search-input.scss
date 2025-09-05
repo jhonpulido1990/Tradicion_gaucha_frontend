@@ -1,0 +1,73 @@
+@use '../../../../assets/style/variables' as variables;
+@use '../../../../assets/style/mixins' as mixins;
+
+.search-input {
+  width: 100%;
+  position: relative;
+
+  &__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+  }
+
+  &__icon {
+    position: absolute;
+    left: variables.$spacing-lg;
+    color: variables.color(gray3);
+    font-size: variables.$font-size-text-mobile;
+    z-index: 1;
+    pointer-events: none;
+
+    @include mixins.tablet-up() {
+      font-size: variables.$font-size-text;
+      left: variables.$spacing-xl;
+    }
+  }
+
+  &__field {
+    width: 100%;
+    padding: variables.$spacing-sm variables.$spacing-sm variables.$spacing-sm calc(#{variables.$spacing-sm} + #{variables.$spacing-sm});
+    border: 1px solid variables.color(gray1);
+    border-radius: variables.$borderRadius;
+    background-color: variables.color(white1);
+    font-size: variables.$font-size-text-mobile;
+    color: variables.color(black2);
+    transition: all variables.$transitionDuration variables.$transitionEasing;
+    font-family: inherit;
+    line-height: 1.5;
+
+    // Better mobile experience
+    @include mixins.mobile-only() {
+      padding: variables.$spacing-sm variables.$spacing-sm variables.$spacing-sm calc(#{variables.$spacing-sm} + #{variables.$spacing-xl});
+    }
+
+    // Tablet and up: More generous padding
+    @include mixins.tablet-up() {
+      /* padding: variables.$spacing-lg variables.$spacing-xl variables.$spacing-lg calc(#{variables.$spacing-xl} + #{variables.$spacing-xl}); */
+            padding: variables.$spacing-sm variables.$spacing-sm variables.$spacing-sm calc(#{variables.$spacing-xl} + #{variables.$spacing-xl});
+      /* font-size: variables.$font-size-text; */
+      border-radius: variables.$borderRadius-lg;
+    }
+
+    &::placeholder {
+      color: variables.color(gray3);
+      font-size: inherit;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: variables.color(primary);
+      box-shadow: 0 0 0 3px rgba(28, 110, 168, 0.12);
+      background-color: variables.color(white1);
+    }
+
+    &:hover:not(:focus) {
+      border-color: variables.color(gray2);
+    }
+
+    // Better focus for accessibility
+    @include mixins.focused();
+  }
+}

@@ -1,0 +1,18 @@
+<div class="view-toggle">
+  <button
+    type="button"
+    class="view-toggle__button"
+    [class.view-toggle__button--active]="currentView() === 'grid'"
+    (click)="onViewChange('grid')"
+  >
+    <i class="pi pi-th-large"></i>
+  </button>
+  <button
+    type="button"
+    class="view-toggle__button"
+    [class.view-toggle__button--active]="currentView() === 'list'"
+    (click)="onViewChange('list')"
+  >
+    <i class="pi pi-list"></i>
+  </button>
+</div>

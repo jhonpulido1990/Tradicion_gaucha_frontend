@@ -1,0 +1,183 @@
+@use '../../../../assets/style/variables' as variables;
+@use '../../../../assets/style/mixins' as mixins;
+
+.filter-dropdown {
+  position: relative;
+  width: 100%;
+
+  &__trigger {
+    width: 100%;
+    padding: variables.$spacing-sm;
+    border: 1px solid variables.color(gray1);
+    border-radius: variables.$borderRadius;
+    background-color: variables.color(white1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    transition: all variables.$transitionDuration variables.$transitionEasing;
+    font-family: inherit;
+    line-height: 1.5;
+
+    // Mobile: Adjusted padding
+    @include mixins.mobile-only() {
+      padding: variables.$spacing-sm;
+    }
+
+    // Tablet and up: Better visual hierarchy
+    @include mixins.tablet-up() {
+      padding: variables.$spacing-sm variables.$spacing-sm;
+      border-radius: variables.$borderRadius-lg;
+    }
+
+    &:hover:not(.filter-dropdown__trigger--open) {
+      border-color: variables.color(primary-light);
+      background-color: variables.color(gray0);
+    }
+
+    &--open {
+      border-color: variables.color(primary);
+      box-shadow: 0 0 0 3px rgba(28, 110, 168, 0.12);
+      background-color: variables.color(white1);
+
+      .filter-dropdown__arrow {
+        transform: rotate(180deg);
+        color: variables.color(primary);
+      }
+    }
+
+    // Better focus for accessibility
+    &:focus-visible {
+      @include mixins.focused();
+    }
+  }
+
+  &__label {
+    font-size: variables.$font-size-text-mobile;
+    color: variables.color(black2);
+    font-weight: 400;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    flex: 1;
+    text-align: left;
+
+   /*  @include mixins.tablet-up() {
+      font-size: variables.$font-size-text;
+    } */
+  }
+
+  &__arrow {
+    font-size: variables.$font-size-sm;
+    color: variables.color(gray3);
+    transition: all variables.$transitionDuration variables.$transitionEasing;
+    margin-left: variables.$spacing-md;
+    flex-shrink: 0;
+
+    @include mixins.tablet-up() {
+      font-size: variables.$font-size-text-mobile;
+    }
+  }
+
+  &__menu {
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 0;
+    right: 0;
+    background-color: variables.color(white1);
+    border: 1px solid variables.color(gray1);
+    border-radius: variables.$borderRadius;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+    max-height: 240px;
+    overflow-y: auto;
+    z-index: variables.$z-dropdown;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-8px);
+    transition: all variables.$transitionDuration variables.$transitionEasing;
+
+    // Better mobile experience
+    @include mixins.mobile-only() {
+      max-height: 200px;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    // Tablet and up: Enhanced styling
+    @include mixins.tablet-up() {
+      border-radius: variables.$borderRadius-lg;
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.1);
+    }
+
+    &--open {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    // Custom scrollbar
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: variables.color(gray0);
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: variables.color(gray2);
+      border-radius: 3px;
+
+      &:hover {
+        background: variables.color(gray3);
+      }
+    }
+  }
+
+  &__option {
+    width: 100%;
+    padding: variables.$spacing-xs variables.$spacing-sm;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    font-size: variables.$font-size-text-mobile;
+    color: variables.color(black2);
+    transition: all variables.$transitionDuration variables.$transitionEasing;
+    font-family: inherit;
+    line-height: 1.5;
+
+    @include mixins.tablet-up() {
+      padding: variables.$spacing-xs variables.$spacing-sm;
+      /* font-size: variables.$font-size-text; */
+    }
+
+    &:hover:not(.filter-dropdown__option--selected) {
+      background-color: variables.color(gray0);
+      color: variables.color(primary);
+    }
+
+    &--selected {
+      background-color: variables.color(primary);
+      color: variables.color(white1);
+      font-weight: 500;
+
+      &:hover {
+        background-color: variables.color(primary-light);
+      }
+    }
+
+    &:first-child {
+      border-radius: variables.$borderRadius variables.$borderRadius 0 0;
+    }
+
+    &:last-child {
+      border-radius: 0 0 variables.$borderRadius variables.$borderRadius;
+    }
+
+    // Better focus for accessibility
+    &:focus-visible {
+      outline: 2px solid variables.color(primary);
+      outline-offset: -2px;
+    }
+  }
+}

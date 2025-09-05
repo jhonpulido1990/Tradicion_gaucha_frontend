@@ -1,0 +1,78 @@
+@use '../../../../assets/style/variables' as variables;
+@use '../../../../assets/style/mixins' as mixins;
+
+.view-toggle {
+  display: flex;
+  border: 1px solid variables.color(gray1);
+  border-radius: variables.$borderRadius;
+  overflow: hidden;
+  background-color: variables.color(white1);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+
+  // Tablet and up: Enhanced styling
+  @include mixins.tablet-up() {
+    border-radius: variables.$borderRadius-lg;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.06);
+  }
+
+  &__button {
+   /*  padding: variables.$spacing-sm; */
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all variables.$transitionDuration variables.$transitionEasing;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    min-width: 44px; // Better touch target
+    min-height: 44px;
+
+    i {
+      font-size: variables.$font-size-text-mobile;
+      color: variables.color(gray4);
+      transition: all variables.$transitionDuration variables.$transitionEasing;
+
+      @include mixins.tablet-up() {
+        font-size: variables.$font-size-text;
+      }
+    }
+
+    &:hover:not(.view-toggle__button--active) {
+      background-color: variables.color(gray0);
+      
+      i {
+        color: variables.color(primary);
+      }
+    }
+
+    &--active {
+      background-color: variables.color(primary);
+      box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1);
+
+      i {
+        color: variables.color(white1);
+      }
+
+      &:hover {
+        background-color: variables.color(primary-light);
+      }
+    }
+
+    &:not(:last-child) {
+      border-right: 1px solid variables.color(gray1);
+    }
+
+    // Better focus for accessibility
+    &:focus-visible {
+      outline: 2px solid variables.color(primary);
+      outline-offset: -2px;
+      z-index: 1;
+    }
+
+    // Active state for better UX
+    &:active {
+      transform: scale(0.98);
+    }
+  }
+}
