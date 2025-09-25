@@ -1,11 +1,9 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { Navbar } from "../../../shared/organism/navbar/navbar";
-import { Footer } from "../../../shared/organism/footer/footer";
 
 @Component({
   selector: 'app-home-layouts',
-  imports: [RouterOutlet, Navbar, Footer],
+  imports: [RouterOutlet],
   templateUrl: './home-layouts.html',
   styleUrl: './home-layouts.scss'
 })
