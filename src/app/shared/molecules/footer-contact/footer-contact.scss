@@ -1,0 +1,104 @@
+@use '../../../../assets/style/variables' as vars;
+@use '../../../../assets/style/mixins' as mixins;
+
+.footer-contact {
+  &__title {
+    font-size: vars.$font-size-text-mobile;
+    font-weight: 700;
+    color: vars.color('secondary');
+    margin: 0 0 vars.$spacing-md 0;
+    text-align: center;
+    position: relative;
+
+    @include mixins.tablet-up() {
+      font-size: vars.$font-size-text;
+      text-align: left;
+    }
+
+    &::after {
+      content: '';
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40px;
+      height: 2px;
+      background: vars.color('primary');
+      border-radius: 1px;
+
+      @include mixins.tablet-up() {
+        left: 0;
+        transform: none;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$spacing-md;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  &__item {
+    width: 100%;
+  }
+
+  &__info {
+    display: flex;
+    align-items: flex-start;
+    gap: vars.$spacing-sm;
+    padding: vars.$spacing-sm;
+    border-radius: vars.$borderRadius-sm;
+    transition: all vars.$transitionDuration vars.$transitionEasing;
+
+    &:hover {
+      background: rgba(vars.color('primary'), 0.05);
+    }
+  }
+
+  &__icon {
+    font-size: 1.2rem;
+    color: vars.color('primary');
+    margin-top: 2px;
+    flex-shrink: 0;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$spacing-xs;
+    min-width: 0;
+    flex: 1;
+  }
+
+  &__label {
+    font-size: vars.$font-size-ultra-sm;
+    font-weight: 600;
+    color: vars.color('gray3');
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  &__value {
+    font-size: vars.$font-size-sm;
+    color: vars.color('gray1');
+    line-height: 1.4;
+    word-break: break-word;
+
+    &--link {
+      color: vars.color('white1');
+      text-decoration: none;
+      transition: color vars.$transitionDuration vars.$transitionEasing;
+
+      &:hover {
+        color: vars.color('secondary');
+        text-decoration: underline;
+      }
+
+      @include mixins.focused();
+    }
+  }
+}

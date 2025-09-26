@@ -1,0 +1,26 @@
+<div class="footer-contact">
+  <h3 class="footer-contact__title">Contacto</h3>
+  <ul class="footer-contact__list">
+    @for (contact of contactInfo(); track contact.type) {
+    <li class="footer-contact__item">
+      <div class="footer-contact__info">
+        <i class="footer-contact__icon pi pi-{{ contact.icon }}"></i>
+        <div class="footer-contact__content">
+          <span class="footer-contact__label">{{ contact.label }}</span>
+          @if (contact.type === 'email') {
+          <a class="footer-contact__value footer-contact__value--link" [href]="'mailto:' + contact.value">
+            {{ contact.value }}
+          </a>
+          } @else if (contact.type === 'phone' || contact.type === 'whatsapp') {
+          <a class="footer-contact__value footer-contact__value--link" [href]="'tel:' + contact.value">
+            {{ contact.value }}
+          </a>
+          } @else {
+          <span class="footer-contact__value">{{ contact.value }}</span>
+          }
+        </div>
+      </div>
+    </li>
+    }
+  </ul>
+</div>

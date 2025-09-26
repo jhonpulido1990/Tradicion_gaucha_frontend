@@ -1,0 +1,14 @@
+<div class="social-media">
+  <h3 class="social-media__title">Síguenos</h3>
+  <ul class="social-media__list">
+    @for (social of socialLinks(); track social.platform) {
+    <li class="social-media__item">
+      <a class="social-media__link social-media__link--{{ social.platform.toLowerCase() }}" [href]="social.url"
+        [attr.aria-label]="social.label" target="_blank" rel="noopener noreferrer" (click)="onSocialClick.emit(social)">
+        <i class="social-media__icon pi pi-{{ social.icon }}"></i>
+        <span class="social-media__text">{{ social.platform }}</span>
+      </a>
+    </li>
+    }
+  </ul>
+</div>

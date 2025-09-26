@@ -1,0 +1,16 @@
+<nav class="footer-nav">
+  @for (section of sections(); track section.title) {
+  <div class="footer-nav__section">
+    <h3 class="footer-nav__title">{{ section.title }}</h3>
+    <ul class="footer-nav__list">
+      @for (link of section.links; track link.route) {
+      <li class="footer-nav__item">
+        <a class="footer-nav__link" [routerLink]="link.route" (click)="onLinkClick.emit(link)">
+          {{ link.label }}
+        </a>
+      </li>
+      }
+    </ul>
+  </div>
+  }
+</nav>

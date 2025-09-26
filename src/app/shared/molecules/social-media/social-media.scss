@@ -1,0 +1,175 @@
+@use '../../../../assets/style/variables' as vars;
+@use '../../../../assets/style/mixins' as mixins;
+
+.social-media {
+  &__title {
+    font-size: vars.$font-size-text-mobile;
+    font-weight: 700;
+    color: vars.color('white1');
+    margin: 0 0 vars.$spacing-md 0;
+    text-align: center;
+
+    @include mixins.tablet-up() {
+      font-size: vars.$font-size-text;
+      text-align: left;
+    }
+  }
+
+  &__list {
+    display: flex;
+    justify-content: center;
+    gap: vars.$spacing-sm;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: wrap;
+
+    @include mixins.tablet-up() {
+      justify-content: flex-start;
+      gap: vars.$spacing-md;
+    }
+  }
+
+  &__item {
+    flex-shrink: 0;
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border-radius: vars.$borderRadius;
+    background: vars.color('gray5');
+    color: vars.color('white1');
+    text-decoration: none;
+    transition: all vars.$transitionDuration vars.$transitionEasing;
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+
+    @include mixins.tablet-up() {
+      width: auto;
+      height: auto;
+      padding: vars.$spacing-sm vars.$spacing-md;
+      gap: vars.$spacing-sm;
+    }
+
+    // Efecto hover general - IMPORTANTE: debe ir ANTES de los modificadores específicos
+    &:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(vars.color('black1'), 0.3);
+    }
+
+    // Estados específicos por plataforma
+    &--facebook {
+      background-color: #1877F2 !important;
+
+      &:hover {
+        background-color: #166FE5 !important;
+        transform: translateY(-3px) scale(1.05);
+      }
+    }
+
+    &--instagram {
+      background: linear-gradient(45deg, #F58529, #DD2A7B, #8134AF, #515BD4) !important;
+
+      &:hover {
+        background: linear-gradient(45deg, #E1751F, #C91C6B, #6D2C9F, #4147C4) !important;
+        transform: translateY(-3px) scale(1.05);
+      }
+    }
+
+    &--whatsapp {
+      background-color: #25D366 !important;
+
+      &:hover {
+        background-color: #20B954 !important;
+        transform: translateY(-3px) scale(1.05);
+      }
+    }
+
+    &--twitter {
+      background-color: #1DA1F2 !important;
+
+      &:hover {
+        background-color: #0D8BD9 !important;
+        transform: translateY(-3px) scale(1.05);
+      }
+    }
+
+    &--youtube {
+      background-color: #FF0000 !important;
+
+      &:hover {
+        background-color: #E60000 !important;
+        transform: translateY(-3px) scale(1.05);
+      }
+    }
+
+    // Estados de focus para accesibilidad
+    &:focus {
+      outline: 2px solid vars.color('secondary');
+      outline-offset: 2px;
+    }
+
+    &:focus:not(:focus-visible) {
+      outline: none;
+    }
+
+    &:focus-visible {
+      outline: 2px solid vars.color('secondary');
+      outline-offset: 2px;
+    }
+  }
+
+  &__icon {
+    font-size: 1.25rem;
+    transition: transform vars.$transitionDuration vars.$transitionEasing;
+
+    @include mixins.tablet-up() {
+      font-size: 1.1rem;
+    }
+
+    // Animación del icono en hover
+    .social-media__link:hover & {
+      transform: scale(1.1);
+    }
+  }
+
+  &__text {
+    display: none;
+    font-weight: 600;
+    font-size: vars.$font-size-sm;
+    white-space: nowrap;
+    color: black;
+
+    @include mixins.tablet-up() {
+      display: block;
+    }
+  }
+}
+
+// Animaciones adicionales para mejor UX
+@media (prefers-reduced-motion: no-preference) {
+  .social-media__link {
+    &::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300%;
+      height: 300%;
+      background: inherit;
+      border-radius: 50%;
+      z-index: 0;
+      transform: translate(-50%, -50%) scale(0);
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1);
+    }
+
+    &:hover::before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+}

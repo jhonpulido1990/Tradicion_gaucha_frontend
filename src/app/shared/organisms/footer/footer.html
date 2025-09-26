@@ -1,0 +1,49 @@
+<footer class="footer">
+  <div class="footer__container">
+    <!-- Main Footer Content -->
+    <div class="footer__content">
+      <!-- Brand Section -->
+      <div class="footer__brand">
+        <app-brand-logo [size]="'lg'" [showTagline]="true" />
+
+        <p class="footer__description">
+          Productos auténticos de la tradición gaucha argentina.
+          Calidad y tradición en cada producto para mantener vivas
+          nuestras raíces culturales.
+        </p>
+
+        <!-- Argentine Flag Badge -->
+        <div class="footer__badge">
+          <img class="footer__flag" ngSrc="assets/images/logo/argentina.png" alt="Bandera Argentina" width="24"
+            height="16" />
+          <span class="footer__badge-text">Hecho en Argentina</span>
+        </div>
+      </div>
+
+      <!-- Navigation Links -->
+      <app-footer-nav [sections]="navigationSections()" (onLinkClick)="handleLinkClick($event)" />
+
+      <!-- Contact Information -->
+      <app-footer-contact [contactInfo]="contactInfo()" />
+
+      <!-- Social Media -->
+      <app-social-media [socialLinks]="socialLinks()" (onSocialClick)="handleSocialClick($event)" />
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer__bottom">
+      <div class="footer__copyright">
+        <p class="footer__copyright-text">
+          © {{ currentYear() }} Tradición Gaucha. Todos los derechos reservados.
+        </p>
+        <div class="footer__legal-links">
+          <a routerLink="/privacy" class="footer__legal-link">Privacidad</a>
+          <span class="footer__separator">•</span>
+          <a routerLink="/terms" class="footer__legal-link">Términos</a>
+          <span class="footer__separator">•</span>
+          <a routerLink="/cookies" class="footer__legal-link">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
