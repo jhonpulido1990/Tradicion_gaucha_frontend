@@ -1,0 +1,11 @@
+<button class="cart-button" [class.cart-button--has-items]="hasItems()" (click)="onCartClick.emit()" type="button">
+
+  <div class="cart-button__icon-wrapper">
+    <i class="cart-button__icon pi pi-shopping-cart"></i>
+    @if (itemCount() > 0) {
+    <span class="cart-button__badge">{{ displayCount() }}</span>
+    }
+  </div>
+
+  <span class="cart-button__text">Carrito</span>
+</button>

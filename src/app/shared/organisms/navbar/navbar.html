@@ -1,0 +1,32 @@
+<header class="navbar">
+  <div class="navbar__container">
+    <!-- Brand/Logo -->
+    <div class="navbar__brand">
+      <app-brand-logo [size]="'lg'" [showTagline]="showTagline()" />
+    </div>
+
+    <!-- Mobile Menu Toggle -->
+    <button class="navbar__toggle" [class.navbar__toggle--active]="isMenuOpen()" (click)="toggleMenu()"
+      [attr.aria-expanded]="isMenuOpen()" aria-label="Alternar menú de navegación" type="button">
+      <span class="navbar__toggle-line"></span>
+      <span class="navbar__toggle-line"></span>
+      <span class="navbar__toggle-line"></span>
+    </button>
+
+    <!-- Navigation Menu -->
+    <div class="navbar__menu" [class.navbar__menu--open]="isMenuOpen()">
+
+      <app-nav-menu [items]="navItems()" (onItemClick)="handleNavItemClick($event)" />
+
+      <!-- Cart Button -->
+      <div class="navbar__cart">
+        <app-cart-button [itemCount]="cartItemCount()" (onCartClick)="handleCartClick()" />
+      </div>
+    </div>
+
+    <!-- Overlay for mobile menu -->
+    @if (isMenuOpen()) {
+    <div class="navbar__overlay" (click)="closeMenu()"></div>
+    }
+  </div>
+</header>

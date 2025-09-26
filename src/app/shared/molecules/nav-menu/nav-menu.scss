@@ -1,0 +1,83 @@
+@use '../../../../assets/style/variables' as vars;
+@use '../../../../assets/style/mixins' as mixins;
+
+.nav-menu {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    gap: vars.$spacing-sm;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    @include mixins.tablet-up() {
+      flex-direction: row;
+      gap: vars.$spacing-sm;
+    }
+  }
+
+  &__item {
+    width: 100%;
+
+    @include mixins.tablet-up() {
+      width: auto;
+    }
+  }
+
+  &__link {
+    display: flex;
+    align-items: center;
+    gap: vars.$spacing-sm;
+    padding: vars.$spacing-md;
+    color: vars.color('black2');
+    text-decoration: none;
+    font-weight: 500;
+    font-size: vars.$font-size-text-mobile;
+    border-radius: vars.$borderRadius-sm;
+    transition: all vars.$transitionDuration vars.$transitionEasing;
+    border-left: 3px solid transparent;
+
+    @include mixins.tablet-up() {
+      padding: vars.$spacing-sm vars.$spacing-md;
+      border-left: none;
+      border-bottom: 3px solid transparent;
+      font-size: vars.$font-size-text;
+    }
+
+    &:hover {
+      background-color: vars.color('bg-gray2');
+      color: vars.color('primary');
+      border-left-color: vars.color('secondary');
+
+      @include mixins.tablet-up() {
+        border-left-color: transparent;
+        border-bottom-color: vars.color('secondary');
+      }
+    }
+
+    &--active {
+      background-color: vars.color('primary');
+      color: vars.color('white1');
+      border-left-color: vars.color('secondary');
+
+      @include mixins.tablet-up() {
+        border-left-color: transparent;
+        border-bottom-color: vars.color('secondary');
+      }
+    }
+
+    @include mixins.focused();
+  }
+
+  &__icon {
+    font-size: 1.2rem;
+
+    @include mixins.tablet-up() {
+      display: none;
+    }
+  }
+
+  &__text {
+    font-weight: inherit;
+  }
+}

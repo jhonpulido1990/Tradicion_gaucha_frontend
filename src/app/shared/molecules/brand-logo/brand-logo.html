@@ -1,0 +1,13 @@
+<a class="brand-logo" [class]="'brand-logo--' + size()" routerLink="/"
+  [attr.aria-label]="'Ir a inicio de ' + brandName()">
+
+  <img class="brand-logo__image" ngSrc="assets/images/logo/logo-removebg.png" [alt]="brandName() + ' - Logo'"
+    [width]="logoWidth()" [height]="logoHeight()" priority />
+
+  <div class="brand-logo__text">
+    <span class="brand-logo__name">{{ brandName() }}</span>
+    @if (showTagline()) {
+    <span class="brand-logo__tagline">Auténtica tradición argentina</span>
+    }
+  </div>
+</a>

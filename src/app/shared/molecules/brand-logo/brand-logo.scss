@@ -1,0 +1,75 @@
+@use '../../../../assets/style/variables' as vars;
+@use '../../../../assets/style/mixins' as mixins;
+
+.brand-logo {
+  display: flex;
+  align-items: center;
+  /* gap: vars.$spacing-sm; */
+  text-decoration: none;
+  color: vars.color('black1');
+  transition: all vars.$transitionDuration vars.$transitionEasing;
+
+  &:hover {
+    transform: scale(1.05);
+
+    .brand-logo__name {
+      color: vars.color('primary');
+    }
+  }
+
+  @include mixins.focused();
+
+  &--sm {
+    gap: vars.$spacing-xs;
+
+    .brand-logo__text {
+      font-size: vars.$font-size-sm;
+    }
+  }
+
+  &--lg {
+    /* gap: vars.$spacing-md; */
+
+    .brand-logo__text {
+      font-size: vars.$font-size-text;
+    }
+  }
+
+  &__image {
+    border-radius: vars.$borderRadius-sm;
+    object-fit: contain;
+  }
+
+  &__text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.2;
+
+    @include mixins.mobile-only() {
+      .brand-logo__tagline {
+        display: none;
+      }
+    }
+  }
+
+  &__name {
+    font-weight: 800;
+    font-size: vars.$font-size-text-mobile;
+    color: vars.color('black1');
+    transition: color vars.$transitionDuration vars.$transitionEasing;
+
+    @include mixins.tablet-up() {
+      font-size: vars.$font-size-text;
+    }
+  }
+
+  &__tagline {
+    font-size: vars.$font-size-ultra-sm;
+    color: vars.color('gray4');
+    font-weight: 400;
+
+    @include mixins.tablet-up() {
+      font-size: vars.$font-size-sm;
+    }
+  }
+}

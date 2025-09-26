@@ -1,0 +1,89 @@
+@use '../../../../assets/style/variables' as vars;
+@use '../../../../assets/style/mixins' as mixins;
+
+.cart-button {
+  display: flex;
+  align-items: center;
+  gap: vars.$spacing-sm;
+  padding: vars.$spacing-md;
+  background: vars.color('white1');
+  border: 2px solid vars.color('primary');
+  border-radius: vars.$borderRadius;
+  color: vars.color('primary');
+  font-weight: 600;
+  font-size: vars.$font-size-text-mobile;
+  cursor: pointer;
+  transition: all vars.$transitionDuration vars.$transitionEasing;
+  position: relative;
+
+  @include mixins.tablet-up() {
+    padding: vars.$spacing-sm vars.$spacing-md;
+    font-size: vars.$font-size-text;
+  }
+
+  &:hover {
+    background: vars.color('primary');
+    color: vars.color('white1');
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(vars.color('primary'), 0.3);
+  }
+
+  &--has-items {
+    background: vars.color('secondary');
+    border-color: vars.color('secondary');
+    color: vars.color('black1');
+
+    &:hover {
+      background: vars.color('primary');
+      border-color: vars.color('primary');
+      color: vars.color('white1');
+    }
+  }
+
+  @include mixins.focused();
+
+  &__icon-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  &__icon {
+    font-size: 1.5rem;
+
+    @include mixins.tablet-up() {
+      font-size: 1.3rem;
+    }
+  }
+
+  &__badge {
+    position: absolute;
+    top: -8px;
+    right: -8px;
+    background: vars.color('error');
+    color: vars.color('white1');
+    font-size: vars.$font-size-ultra-sm;
+    font-weight: 700;
+    padding: 2px 6px;
+    border-radius: 50px;
+    min-width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    animation: pulse 2s infinite;
+  }
+
+  &__text {
+    @include mixins.mobile-only() {
+      display: none;
+    }
+  }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
