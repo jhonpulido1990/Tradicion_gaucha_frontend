@@ -13,7 +13,7 @@
     transform: scale(1.05);
 
     .brand-logo__name {
-      color: vars.color('primary');
+      color: vars.color('secondary');
     }
   }
 
@@ -65,7 +65,7 @@
 
   &__tagline {
     font-size: vars.$font-size-ultra-sm;
-    color: vars.color('gray4');
+    color: vars.color('black2');
     font-weight: 400;
 
     @include mixins.tablet-up() {

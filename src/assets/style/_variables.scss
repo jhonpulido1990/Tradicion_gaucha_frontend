@@ -73,6 +73,14 @@ $colors: (
   // === COLOR PERSONALIZADO ===
   custom-cursor-blue: #3182CE,
   // Azul vibrante para elementos interactivos como cursores
+
+    // === COLORES DE MADERA / TIERRA (Para calidez y naturaleza) ===
+    wood-light: #C8AE8F,
+    // Beige cálido, suave
+    wood-medium: #9E7B5D,
+    // Marrón clásico, de intensidad media
+    wood-dark: #6F5245,
+    // Marrón oscuro, rico y profundo
 );
 
 @function color($color-name) {
