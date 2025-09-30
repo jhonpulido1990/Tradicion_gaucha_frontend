@@ -1,0 +1,14 @@
+<div class="hero-media" [class.hero-media--loaded]="isLoaded()">
+  @if (mediaSource().type === 'image') {
+  <img class="hero-media__image" [ngSrc]="mediaSource().src" [alt]="mediaSource().alt || 'Hero image'" [width]="width()"
+    [height]="height()"  (load)="onMediaLoad()" loading="eager" />
+  } @else if (mediaSource().type === 'video') {
+  <video class="hero-media__video" [src]="mediaSource().src" [poster]="mediaSource().poster" [muted]="muted()"
+    [autoplay]="autoplay()" [loop]="loop()" [controls]="controls()" (loadeddata)="onMediaLoad()" playsinline>
+    Tu navegador no soporta videos HTML5.
+  </video>
+  }
+
+  <!-- Overlay argentino -->
+  <div class="hero-media__overlay"></div>
+</div>

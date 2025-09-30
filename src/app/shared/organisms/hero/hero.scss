@@ -1,0 +1,196 @@
+@use '../../../../assets/style/variables' as vars;
+@use '../../../../assets/style/mixins' as mixins;
+
+.hero {
+  position: relative;
+  padding: 85px vars.$padding-box;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  
+  @include mixins.tablet-up() {
+    padding: 85px vars.$spacing-xl;
+    min-height: 700px;
+  }
+  
+  @include mixins.desktop-up() {
+    min-height: 800px;
+  }
+  
+  // Background variants
+  &--bg-light {
+    background: vars.color('bg-gray1');
+  }
+  
+  &--bg-dark {
+    background: vars.color('black2');
+    color: vars.color('white1');
+  }
+  
+  &--bg-gradient {
+    background: linear-gradient(
+      135deg,
+      vars.color('bg-gray1') 0%,
+      vars.color('white1') 50%,
+      vars.color('bg-gray2') 100%
+    );
+  }
+  
+  &__container {
+    max-width: vars.$container-max-width;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
+  
+  &__content-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: vars.$spacing-xxl;
+    align-items: center;
+    
+    @include mixins.desktop-up() {
+      grid-template-columns: 1fr 1fr;
+      gap: vars.$spacing-xxl * 2;
+    }
+  }
+  
+  &__content {
+    order: 2;
+    
+    @include mixins.desktop-up() {
+      order: 1;
+    }
+  }
+  
+  &__media {
+    order: 1;
+    
+    @include mixins.desktop-up() {
+      order: 2;
+    }
+  }
+  
+  // Layout variants
+  &--centered {
+    text-align: center;
+    
+    .hero__content-wrapper {
+      grid-template-columns: 1fr;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+    
+    .hero__media {
+      order: 1;
+    }
+    
+    .hero__content {
+      order: 2;
+    }
+  }
+  
+  &--reverse {
+    @include mixins.desktop-up() {
+      .hero__content {
+        order: 2;
+      }
+      
+      .hero__media {
+        order: 1;
+      }
+    }
+  }
+  
+  // Decorative elements
+  &__decoration {
+    position: absolute;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 1;
+    
+    &--primary {
+      width: 200px;
+      height: 200px;
+      background: linear-gradient(135deg, rgba(vars.color('primary'), 0.1), rgba(vars.color('primary'), 0.05));
+      top: 10%;
+      right: 10%;
+      animation: float 6s ease-in-out infinite;
+      
+      @include mixins.tablet-up() {
+        width: 300px;
+        height: 300px;
+      }
+    }
+    
+    &--secondary {
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(135deg, rgba(vars.color('secondary'), 0.1), rgba(vars.color('secondary'), 0.05));
+      bottom: 15%;
+      left: 5%;
+      animation: float 8s ease-in-out infinite reverse;
+      
+      @include mixins.tablet-up() {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  }
+}
+
+// Animaciones
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  33% {
+    transform: translateY(-20px) rotate(120deg);
+  }
+  66% {
+    transform: translateY(10px) rotate(240deg);
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+// Animación de entrada del hero completo
+@media (prefers-reduced-motion: no-preference) {
+  .hero {
+    animation: fadeInUp 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+}
+
+// ✅ CORRECTO: Mejoras de accesibilidad - propiedades directas ANTES de reglas anidadas
+@media (prefers-reduced-motion: reduce) {
+  .hero {
+    animation: none;  // ← Propiedad directa PRIMERO
+    
+    &__decoration {
+      animation: none;  // ← Regla anidada DESPUÉS
+    }
+  }
+}
+
+// Responsive mejoras
+@include mixins.mobile-only() {
+  .hero {
+    padding: 85px vars.$padding-box;
+    min-height: 500px;
+    
+    &__content-wrapper {
+      gap: vars.$spacing-lg;
+    }
+  }
+}

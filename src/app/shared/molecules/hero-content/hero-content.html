@@ -1,0 +1,22 @@
+<div class="hero-content" [class.hero-content--animated]="isVisible()">
+  <h1 class="hero-content__title">
+    {{ title() }}
+  </h1>
+
+  @if (subtitle()) {
+  <p class="hero-content__subtitle">
+    {{ subtitle() }}
+  </p>
+  }
+
+  @if (description()) {
+  <p class="hero-content__description">
+    {{ description() }}
+  </p>
+  }
+
+  <!-- Badge argentino -->
+  <div class="hero-content__badge">
+    <span class="hero-content__badge-text">🇦🇷 Tradición Argentina</span>
+  </div>
+</div>

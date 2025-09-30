@@ -1,2 +1,3 @@
-<!-- home template -->
-<p>home template</p>
+<app-hero [title]="heroData().title" [subtitle]="heroData().subtitle" [description]="heroData().description"
+  [mediaSource]="heroData().mediaSource" [ctaButtons]="heroData().ctaButtons" [variant]="'default'"
+  [backgroundType]="'gradient'" (onCTAClick)="handleCTAClick($event)" />

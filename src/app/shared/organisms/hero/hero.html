@@ -1,0 +1,22 @@
+<section class="hero" [class]="heroClasses()">
+  <div class="hero__container">
+    <div class="hero__content-wrapper">
+      <!-- Content Section -->
+      <div class="hero__content">
+        <app-hero-content [title]="title()" [subtitle]="subtitle()" [description]="description()" />
+
+        <app-hero-cta [buttons]="ctaButtons()" (onCTAClick)="onCTAClick.emit($event)" />
+      </div>
+
+      <!-- Media Section -->
+      <div class="hero__media">
+        <app-hero-media [mediaSource]="mediaSource()" [width]="mediaWidth()" [height]="mediaHeight()"
+          [muted]="videoMuted()" [autoplay]="videoAutoplay()" [loop]="videoLoop()" [controls]="videoControls()" />
+      </div>
+    </div>
+
+    <!-- Decorative elements -->
+    <div class="hero__decoration hero__decoration--primary"></div>
+    <div class="hero__decoration hero__decoration--secondary"></div>
+  </div>
+</section>

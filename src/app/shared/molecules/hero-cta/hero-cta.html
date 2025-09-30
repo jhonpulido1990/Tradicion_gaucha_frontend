@@ -1,0 +1,20 @@
+<div class="hero-cta" [class.hero-cta--animated]="isVisible()">
+  @for (button of buttons(); track button.label) {
+  <div class="hero-cta__button-wrapper">
+    @if (button.route) {
+    <a class="hero-cta__button hero-cta__button--{{ button.variant }}" [routerLink]="button.route"
+      (click)="onCTAClick.emit(button)">
+      <i class="hero-cta__icon pi pi-{{ button.icon }}"></i>
+      <span class="hero-cta__text">{{ button.label }}</span>
+    </a>
+    } @else if (button.url) {
+    <a class="hero-cta__button hero-cta__button--{{ button.variant }}" [href]="button.url"
+      [target]="button.type === 'whatsapp' ? '_blank' : '_self'"
+      [rel]="button.type === 'whatsapp' ? 'noopener noreferrer' : ''" (click)="onCTAClick.emit(button)">
+      <i class="hero-cta__icon pi pi-{{ button.icon }}"></i>
+      <span class="hero-cta__text">{{ button.label }}</span>
+    </a>
+    }
+  </div>
+  }
+</div>
